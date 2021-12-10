@@ -9,7 +9,7 @@
     
     <title>
         
-            Deep Learning Compile Home |
+            A Long Summary of Deep Learning Compile |
         
         ChuqingG&#39;s Home
     </title>
@@ -144,7 +144,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Deep Learning Compile Home</span>
+            <span class="title-hover-animation">A Long Summary of Deep Learning Compile</span>
         </div>
 
         
@@ -173,7 +173,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/DL-compile/">DL compile</a>&nbsp;
+                        <a href="/tags/Deep-Learning-Compile/">Deep Learning, Compile</a>&nbsp;
                     </li>
                 
             </ul>
@@ -195,12 +195,39 @@
             <blockquote>
 <p>DL compilers: DL models describes in DL frameworks -&gt; optimized code for DL hardware</p>
 </blockquote>
-<p>It’s important to map the computation to DL hardware efficiently to meet the hardward diversity. On general-purpose hardware, the highly optimized linear algebra libraries serve as the basics(e.g MKL, cuBLAS).</p>
+<h1><span id="background-explanation">Background Explanation</span></h1><h2><span id="deep-learning-framework">Deep Learning Framework</span></h2><h3><span id="tensorflow">TensorFlow</span></h3><p>TensorFlow支持较多语言，基于数据流图进行计算，目前使用Keras作为前端。</p>
+<p>基本结构可以表示如下：</p>
+<div align="center"><img src="../images/v2-607695837c0ec16aeea0caed21bc0b57_r.jpg" width="500"></div>
+
+<ul>
+<li>其中<code>client</code>为前端的主要组成，用于构建计算图，在1.x中通过<code>session</code>接口与<code>master</code>相连。</li>
+<li>运行时<code>master</code>在计算图中反向遍历，找到所依赖的最小子图，负责则管理并在分布式场景将子图分发给<code>worker</code>。<code>master</code>会缓存子图片段以便后续使用，避免重复计算。</li>
+<li><code>worker</code>负责实际执行，根据可用设备(GPU/CPU)调用<code>kernel</code>完成计算。</li>
+</ul>
+<div align="center"><img src="../images/tf_dis.png" width="500"></div>
+
+<h3><span id="keras">Keras</span></h3><p>一个用Python实现的神经网络library，可以作为前端, 以TensorFlow, CNTK等为后端使用。由于其封装性较高，较难添加op或者获取较<code>low-level</code>的信息。</p>
+<h3><span id="pytorch">Pytorch</span></h3><p>PyTorch在python解释器中执行控制流，与TensorFlow提前构建计算图的静态框架不同，它的计算图是动态的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#<span class="doctag">TODO:</span> a deeper understanding of it</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="caffecaffe2">Caffe/Caffe2</span></h3><p>Caffe(卷积神经网络框架)是C++/cuda架构，通过layer表示计算，layer连接成的网络通过DAG表示。</p>
+<h3><span id="mxnet">MXNet</span></h3><h3><span id="cntk">CNTK</span></h3><h3><span id="paddlepaddle">PaddlePaddle</span></h3><h3><span id="onnx">ONNX</span></h3><h2><span id="deep-learning-hardware">Deep Learning Hardware</span></h2><h3><span id="general-purpose-hardware">General-purpose Hardware</span></h3><p>It’s important to map the computation to DL hardware efficiently to meet the hardward diversity. On general-purpose hardware, the highly optimized linear algebra libraries serve as the basics(e.g MKL, cuBLAS).</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Convolution -&gt; matmul -&gt; __GEMM (<span class="keyword">in</span> BLAS lib)</span><br></pre></td></tr></table></figure>
-<p>[placeholder]</p>
-<h2><span id="deep-learning-framework">Deep Learning Framework</span></h2><h3><span id="tensorflow">TensorFlow</span></h3><h3><span id="keras">Keras</span></h3><h3><span id="pytorch">Pytorch</span></h3><h3><span id="caffecaffe2">Caffe/Caffe2</span></h3><h3><span id="mxnet">MXNet</span></h3><h3><span id="cntk">CNTK</span></h3><h3><span id="paddlepaddle">PaddlePaddle</span></h3><h3><span id="onnx">ONNX</span></h3><h2><span id="deep-learning-hardware">Deep Learning Hardware</span></h2><h3><span id="general-purpose-hardware">General-purpose Hardware</span></h3><h3><span id="dedicated-hardware">Dedicated Hardware</span></h3><h3><span id="neuromorphic">Neuromorphic</span></h3><h2><span id="reference">Reference</span></h2><ul>
+
+<p>The most representative general-purpose hardware for DL models is GPU, which achieves high parallelism with many-core architecture. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#<span class="doctag">TODO:</span> add architectureof GPU</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="dedicated-hardware">Dedicated Hardware</span></h3><p>Dedicated hardware is fully customized for DL computation to improve performance and energy efficiency to extreme. The most well known dedicated DL hardware is Google’s TPU series.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#<span class="doctag">TODO:</span> add architectureof TPU</span></span><br></pre></td></tr></table></figure>
+
+<h3><span id="neuromorphic">Neuromorphic</span></h3><p>Neuromorphic chips use electronic technology to simulate the biological brain.</p>
+<h2><span id="hardware-specific-dl-code-generator">Hardware-specific DL Code Generator</span></h2><h3><span id="processor-architecture">Processor Architecture</span></h3><h3><span id="streaming-architecture">Streaming Architecture</span></h3><h1><span id="common-design-architecture">Common Design Architecture</span></h1><p>Frontend, IR, backend. </p>
+<h1><span id="reference">Reference</span></h1><ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://arxiv.org/pdf/2002.03794.pdf">The Deep Learning Compiler: A Comprehensive Survey<i class="fas fa-external-link-alt"></i></a></li>
 <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/ielaam/6287639/8274985/8351898-aam.pdf">A survey of learning: platforms, applications and emerging research<br>trends</a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45166.pdf">TensorFlow 架构介绍(original paper)<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="http://lionheartwang.github.io/blog/2018/03/25/tensorflowjia-gou-jie-shao/">TF 架构介绍blog<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="http://blog.ezyang.com/2019/05/pytorch-internals/">PyTorch internals<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 
         </div>
@@ -211,7 +238,7 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/DL-compile/">#DL compile</a>&nbsp;
+                        <a href="/tags/Deep-Learning-Compile/">#Deep Learning, Compile</a>&nbsp;
                     </li>
                 
             </ul>
@@ -338,7 +365,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Deep Learning Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">TensorFlow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Keras</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">Pytorch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">Caffe&#x2F;Caffe2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">MXNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">CNTK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.7.</span> <span class="nav-text">PaddlePaddle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.8.</span> <span class="nav-text">ONNX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Deep Learning Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">General-purpose Hardware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Dedicated Hardware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Neuromorphic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Background Explanation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Deep Learning Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">TensorFlow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">Keras</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.3.</span> <span class="nav-text">Pytorch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.4.</span> <span class="nav-text">Caffe&#x2F;Caffe2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.5.</span> <span class="nav-text">MXNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.6.</span> <span class="nav-text">CNTK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.7.</span> <span class="nav-text">PaddlePaddle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.8.</span> <span class="nav-text">ONNX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Deep Learning Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">General-purpose Hardware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.2.</span> <span class="nav-text">Dedicated Hardware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.3.</span> <span class="nav-text">Neuromorphic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">Hardware-specific DL Code Generator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">Processor Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.2.</span> <span class="nav-text">Streaming Architecture</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Common Design Architecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
