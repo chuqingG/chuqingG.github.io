@@ -62,7 +62,7 @@
                             <a class=""
                                href="/"
                             >
-                                HOME
+                                首页
                             </a>
                         </li>
                     
@@ -70,7 +70,7 @@
                             <a class=""
                                href="/archives"
                             >
-                                ARCHIVES
+                                归档
                             </a>
                         </li>
                     
@@ -78,7 +78,7 @@
                             <a class=""
                                href="/tags"
                             >
-                                TAGS
+                                标签
                             </a>
                         </li>
                     
@@ -86,7 +86,7 @@
                             <a class=""
                                href="/about"
                             >
-                                ABOUT
+                                关于
                             </a>
                         </li>
                     
@@ -107,22 +107,22 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">HOME</a>
+                       href="/">首页</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">ARCHIVES</a>
+                       href="/archives">归档</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">TAGS</a>
+                       href="/tags">标签</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/about">ABOUT</a>
+                       href="/about">关于</a>
                 </li>
             
         </ul>
@@ -183,12 +183,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>363 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>608 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
         </span>
     
     
@@ -204,12 +204,25 @@
         
 
         <div class="article-content markdown-body">
-            <p>矩阵乘法作为Deep Learning中的重要计算，通过其在cuda上的几种基本优化方式了解Deep Learning计算的优化方向。</p>
+            <p>矩阵乘法作为Deep Learning中的重要计算，通过其在cuda上的几种基本优化方式了解Deep Learning计算的优化方向。以下全部以两个正方形矩阵相乘的<code>kernel</code>写法为例。</p>
+<blockquote>
+<p>没写完，待补充</p>
+</blockquote>
 <h3><span id="naive-implementation">Naive Implementation</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="keyword">void</span> <span class="title">matrixMul</span><span class="params">(A, B, C, K)</span></span>&#123;</span><br><span class="line">    temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = blockIdx.y * blockDim.y + threadIdx.y ;</span><br><span class="line">    <span class="keyword">int</span> j = blockIdx.x * blockDim.x + threadIdx.x ;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k&lt; K – <span class="number">1</span>;k++) </span><br><span class="line">        accu += A[i][k] * B[k][j];</span><br><span class="line">    C[i][j] = accu;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<div align="center"><img src="../../../../images/cuda_1.png" width="500"></div>
+<p>最简单的实现完全根据矩阵乘法公式进行，即对于每个$c_{i,j}$, 根据公式$c_{i,j}= \sum_k a_{i,k}*b_{k,j}$算出结果。具体来说，对于n*n的两矩阵相乘，在cuda中需要启动n*n个线程，每个线程调用一个kernel，该过程在global memory中的表示如下：</p>
+<div align="center"><img src="../../../../images/cuda_1.png" width="400"></div>
 
-<h3><span id="tiling">Tiling</span></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="keyword">void</span> <span class="title">matrixMul</span><span class="params">(A, B, C, K)</span></span>&#123;</span><br><span class="line">    accu &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tidx = <span class="number">0</span>; tidx &lt; K/blockDim.x; tidx++)&#123;</span><br><span class="line">        i = blockIdx.y * blockDim.y + threadIdx.y;</span><br><span class="line">        j = tidx * blockDim.x + threadIdx.x;</span><br><span class="line">        A_s[threadIdx.y][threadIdx.x] = A[i][j];</span><br><span class="line">        <span class="built_in">B_s</span>(threadIdx.x][threadIdx.y] = B[j][i]; </span><br><span class="line">        __sync();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; threadDim.x; k++)</span><br><span class="line">	 accu += A_s[threadIdx.y][k] * B_s[k][threadIdx.x];</span><br><span class="line">        __sync();</span><br><span class="line">    &#125;</span><br><span class="line">    i = blockIdx.y * blockDim.y + threadIdx.y;</span><br><span class="line">    j = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    C[i][j] = accu;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div align="center"><img src="../images/cuda_1.png" width="300"></div>
+
+<p>线程从GM中取出A矩阵的一行与B矩阵的一列，相乘累加后得到结果再存回GM。 </p>
+<h3><span id="tiling">Tiling</span></h3><p>GPU存储结构的一个示意图如下：</p>
+<div align="center"><img src="../../../../images/cuda_7.png" width="400"></div>
+
+<div align="center"><img src="../images/cuda_7.png" width="400"></div>
+
+<p>由图，相对于计算单元，在访存速度上有$global\ memory &lt; shared\ memory &lt; register$。<br>在计算访存比(Compute-to-memory-access ratio)上，每一次乘加操作都对应从GM中取出$a_{i,k}, b_{k,j}$两个浮点数，由于计算速度远大于访存速度，因此ALU的实际利用率较低。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="keyword">void</span> <span class="title">matrixMul</span><span class="params">(A, B, C, K)</span></span>&#123;</span><br><span class="line">    accu &lt;= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tidx = <span class="number">0</span>; tidx &lt; K/blockDim.x; tidx++)&#123;</span><br><span class="line">        i = blockIdx.y * blockDim.y + threadIdx.y;</span><br><span class="line">        j = tidx * blockDim.x + threadIdx.x;</span><br><span class="line">        A_s[threadIdx.y][threadIdx.x] = A[i][j];</span><br><span class="line">        <span class="built_in">B_s</span>(threadIdx.x][threadIdx.y] = B[j][i]; </span><br><span class="line">        __sync();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; threadDim.x; k++)</span><br><span class="line">	 accu += A_s[threadIdx.y][k] * B_s[k][threadIdx.x];</span><br><span class="line">        __sync();</span><br><span class="line">    &#125;</span><br><span class="line">    i = blockIdx.y * blockDim.y + threadIdx.y;</span><br><span class="line">    j = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    C[i][j] = accu;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <div align="center"><img src="../../../../images/cuda_2.png" width="500"></div>
 
@@ -249,7 +262,7 @@
                         >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">rbc paper notes</span>
-                                <span class="post-nav-item">Next posts</span>
+                                <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
                               <i class="fas fa-chevron-right"></i>
@@ -287,13 +300,13 @@
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
         </div>
         
         
