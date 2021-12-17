@@ -254,10 +254,10 @@
 
 <h3><span id="嵌套并行">嵌套并行</span></h3><p>大多数现有GPU并行解决方案都是嵌套并行化(<a class="link" target="_blank" rel="noopener" href="https://courses.grainger.illinois.edu/cs484/sp2020/9_merged.pdf">nested parallelism<i class="fas fa-external-link-alt"></i></a>), fork-join的一种形式。每个task可以被进一步递归切分成子任务来利用目标硬件的线程层级结构，由于位于同一计算阶段的节点无法获取彼此的数据，只能在join阶段进行交互，也被称为无共享嵌套并行(shared-nothing nested parallelism)。</p>
 <p>TVM给出的替代方案为一组线程合作取出他们都需要的数据并放进shared-memory，这种方案可以利用GPU的内存层级结构并支持线程间数据重用。矩阵乘的优化例子如下：</p>
-<div align="center"><img src="../../../../images/tvm_7.png" width="500"></div>
+<div align="center"><img src="../../../../images/tvm_7.png" width="600"></div>
 
 <p>TVM引入了memory scope的概念用来计算阶段可以被标记为共享（e.g.上图中的AS和BS），如果没有指明的话则会根据组内数据以来进行自动推断，同时还需要引入barrier以保证消费者可以访问正确数据。<br>此外，memory scope还可以用于标记特定buffer或对特定硬件创建指定lowering规则。</p>
-<h3><span id="张量化">张量化</span></h3><div align="center"><img src="../../../../images/tvm_8.png" width="500"></div>
+<h3><span id="张量化">张量化</span></h3><div align="center"><img src="../../../../images/tvm_8.png" width="600"></div>
 <div align="center"><img src="../images/tvm_8.png" width="500"></div>
 
 <h2><span id="reference">Reference</span></h2><ul>
