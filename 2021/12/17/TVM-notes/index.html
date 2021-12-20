@@ -183,12 +183,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.5k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -257,11 +257,20 @@
 <div align="center"><img src="../../../../images/tvm_7.png" width="600"></div>
 
 <p>TVM引入了memory scope的概念用来计算阶段可以被标记为共享（e.g.上图中的AS和BS），如果没有指明的话则会根据组内数据以来进行自动推断，同时还需要引入barrier以保证消费者可以访问正确数据。<br>此外，memory scope还可以用于标记特定buffer或对特定硬件创建指定lowering规则。</p>
-<h3><span id="张量化">张量化</span></h3><div align="center"><img src="../../../../images/tvm_8.png" width="600"></div>
+<h3><span id="张量化">张量化</span></h3><p>随着深度学习的发展，添加tensor计算原语成为一种趋势，编译框架无缝将其结合并利用其特性这一问题称为张量化(<strong>Tensorization</strong>)。它和SIMD架构的矢量化比较类似，但不有所不同：指令输入是多维的，可能为定长或变长，每种都有着不同的数据布局。为了适应新硬件加速器的发展，需要将其设计为可扩展形式。</p>
+<p>TVM设计了一种张量内在声明(tensor-intrinsic declaration)来实现schedule和目标硬件本征分离。使用同一种张量表达语言声明每种硬件本征行为和其相关的lowering规则。下图是一个声明的例子：</p>
+<div align="center"><img src="../../../../images/tvm_8.png" width="600"></div>
+
+<p>此外，TVM引入了一个张量化调度原语来替代一系列计算及其本征。编译器会将计算模式与硬件声明相匹配，并将其lower到对应的硬件本征。</p>
+<p>生成的张量调度代码和高性能计算中的实践一致，即将复杂操作解耦为一系列微内核操作。这种张量原语也可以利用手工优化的微内核，从而提高在特定平台的性能。</p>
+<h3><span id="内存延迟隐藏">内存延迟隐藏</span></h3><p>延迟隐藏是指将内存操作与计算重叠从而最大化利用内存和计算资源的过程。具体策略与硬件后端有关，在CPU中，内存延迟隐藏通过同步多线程和硬件预取技术隐式实现；在GPU中则通过多个warp的快速上下文切换实现。而专用的深度学习加速器则通常采取通过DAE(decoupled access-execute)架构来精简控制或者将细粒度同步的问题卸载到软件。DAE的示意图如下：</p>
+<div align="center"><img src="../../../../images/tvm_9.png" width="450"></div>
 
 
 <h2><span id="reference">Reference</span></h2><ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi18/presentation/chen">TVM: An Automated End-to-End Optimizing Compiler for Deep Learning<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33287871/article/details/113390487">TVM blog<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://www.sciencedirect.com/topics/computer-science/nested-parallelism">Nested Parallelism, Sciencedirect<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 
         </div>
@@ -288,7 +297,7 @@
                            href="/2021/12/17/Ansor-notes/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Ansor notes</span>
+                                <span class="post-nav-title-item">Ansor论文笔记</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -324,6 +333,10 @@
         
             <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
@@ -409,7 +422,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">计算图优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">算子融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">其它优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">生成张量运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">Tensor表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">嵌套并行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">张量化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">计算图优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">算子融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">其它优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">生成张量运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">Tensor表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">嵌套并行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">张量化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">内存延迟隐藏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>

@@ -9,7 +9,7 @@
     
     <title>
         
-            Ansor notes |
+            Ansor论文笔记 |
         
         ChuqingG&#39;s Home
     </title>
@@ -144,7 +144,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Ansor notes</span>
+            <span class="title-hover-animation">Ansor论文笔记</span>
         </div>
 
         
@@ -168,8 +168,23 @@
     </span>
     
     
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Compile/">Compile</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
     
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>169 Words</span>
+        </span>
     
     
         <span class="article-min2read article-meta-item">
@@ -189,11 +204,24 @@
         
 
         <div class="article-content markdown-body">
-            
+            <p>本文基于Lianmin Zheng等人在OSDI2020上的文章<a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">《Ansor: Generating High-Performance Tensor Programs for Deep Learning》<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>由于之前的工作均存在需要大量工程量开发平台特定优化代码，或者由于搜索空间以及较低效的搜索策略而无法找到高性能实现的问题，Ansor提出了一个针对Deep learing应用的张量程序生成框架。<br>Ansor通过在分层的搜索空间中抽取程序，探索了更多的优化组合，此外通过进化搜索和学好了的成本模型来fine-tune抽出的程序，从而决定最优程序。</p>
+<h2><span id="reference">Reference</span></h2><ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">Ansor: Generating High-Performance Tensor Programs for Deep Learning<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+
         </div>
 
         
 
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/Compile/">#Compile</a>&nbsp;
+                    </li>
+                
+            </ul>
         
 
         
@@ -257,6 +285,10 @@
         
             <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
@@ -342,7 +374,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
