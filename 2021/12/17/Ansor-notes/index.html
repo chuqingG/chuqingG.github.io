@@ -183,12 +183,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>728 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -227,7 +227,25 @@
 <div align="center"><img src="../../../../images/ansor2.png" width="400"></div>
 
 <p>Ansor使用算子融合将DNN模型从一些常用格式(e.g. ONNX)切分为子图，任务调度器基于梯度下降的调度算法为各个子图分配资源，采样器从搜索空间中随机采样，优化器进行fine-tune。</p>
-<h2><span id="program-sampling">Program Sampling</span></h2><h2><span id="reference">Reference</span></h2><ul>
+<h2><span id="program-sampling">Program Sampling</span></h2><p>Ansor将搜索空间分为了<strong>sketch</strong>和<strong>annotation</strong>两层，其中high-level的程序结构称为sketch，底层选择(e.g., tile size, parallel, etc.)称为annotations。</p>
+<h3><span id="sketch生成">Sketch生成</span></h3><p>Ansor提出了一个基于推导的枚举方式，通过递归应用一些基本规则生成所有可能的sketch。定义一个<code>state</code>为$\sigma = (S, i) $, 其中S是当前生成的部分sketch，i是节点在计算图中的拓扑排序编号，该拓扑排序从<code>output</code>向<code>input</code>编号。该推导过程从$\sigma = (naive\ program, last\ node)$开始，当<code>i</code>=0时结束，通过维护一个queue来存放所有中间状态。下图是CPU上的推导规则。</p>
+<div align="center"><img src="../../../../images/ansor4.png"></div>
+
+<ul>
+<li><code>IsStrictInlinable(S,i)</code>: 表示S中的node i是element-wise算子，总是可以被直接内联(e.g., add,ReLU)</li>
+<li><code>HasDataReuse(S,i)</code>:表示S中的node i是计算密集型算子，有大量的算子内数据重用机会(e.g., Conv2d, matmul)</li>
+<li><code>HasFusibleConsumer(S,i)</code>:表示S中的node i只有一个消费者j，且j可以被融合进node i(e.g., matmul + bias_add, conv2d + relu)，即TVM中的reduction+element-wise</li>
+<li><code>HasMoreReductionParallel(S,i)</code>:表示S中的node i在空间维度很难并行，但在reduction上有足够并行机会(e.g., computing 2-norm of a matrix, matmul $C_{2\times 2}=A_{2\times 512}\cdot B_{512\times 2}$) </li>
+</ul>
+<p>该分析通过切分数学表达式中的读写模式自动进行，对各个规则做简单解释：</p>
+<p>rule1和2是字面意思，rule3，4和5对应多层次tiling以及含可重用数据的节点融合。对于rule3，在CPU上使用了<code>S</code>和<code>R</code>tile结构，其中<code>S</code>表示space loop的tile，<code>R</code>表示reduction loop的tile。以矩阵乘为例，<code>(i,k)*(k,j)</code>的矩阵乘中，<code>i</code>和<code>j</code>为space loop，<code>k</code>为reduction loop。<br>下面是一个运用rule3的例子：</p>
+<div align="center"><img src="../../../../images/ansor6.png" width="800"></div>
+对应的tiling过程如下图所示：
+
+<div align="center"><img src="../../../../images/ansor5.png" width="700"></div>
+
+<p>rule4除了多层次tiling还包括处理可融合消费者。</p>
+<h2><span id="reference">Reference</span></h2><ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">Ansor: Generating High-Performance Tensor Programs for Deep Learning<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 
@@ -395,7 +413,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Program Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Program Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">Sketch生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
