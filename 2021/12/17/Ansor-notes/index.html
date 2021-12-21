@@ -336,7 +336,7 @@ mjx-container[display="true"] + br {
 <li>通过评估论证了Ansor在各种DNN和硬件平台上效果比现存系统好</li>
 </ul>
 <h2><span id="overview">Overview</span></h2><p>Ansor的整体架构可以表示如下：</p>
-<div align="center">
+<div align="center"><img src="../../../../images/ansor2.png" width="400"></div>
 
 <p>Ansor使用算子融合将DNN模型从一些常用格式(e.g. ONNX)切分为子图，任务调度器基于梯度下降的调度算法为各个子图分配资源，采样器从搜索空间中随机采样，优化器进行fine-tune。</p>
 <h2><span id="program-sampling">Program Sampling</span></h2><p>Ansor将搜索空间分为了<strong>sketch</strong>和<strong>annotation</strong>两层，其中high-level的程序结构称为sketch，底层选择(e.g., tile size, parallel, etc.)称为annotations。</p>
@@ -360,7 +360,7 @@ mjx-container[display="true"] + br {
 <h2><span id="reference">Reference</span></h2><ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">Ansor: Generating High-Performance Tensor Programs for Deep Learning<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
-</div></div></div>
+</div></div>
         </div>
 
         
