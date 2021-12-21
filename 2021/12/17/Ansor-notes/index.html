@@ -351,16 +351,16 @@ mjx-container[display="true"] + br {
 </ul>
 <p>该分析通过切分数学表达式中的读写模式自动进行，对各个规则做简单解释：</p>
 <p>rule1和2是字面意思，rule3，4和5对应多层次tiling以及含可重用数据的节点融合。对于rule3，在CPU上使用了<code>S</code>和<code>R</code>tile结构，其中<code>S</code>表示space loop的tile，<code>R</code>表示reduction loop的tile。以矩阵乘为例，<code>(i,k)*(k,j)</code>的矩阵乘中，<code>i</code>和<code>j</code>为space loop，<code>k</code>为reduction loop。<br>下面是一个运用rule3的例子：</p>
-<div align="center">
-对应的tiling过程如下图所示：
+<div align="center"><img src="../../../../images/ansor6.png" width="800"></div>
 
-<div align="center">
+<p>对应的tiling过程如下图所示：</p>
+<div align="center"><img src="../../../../images/ansor5.png" width="700"></div>
 
 <p>rule4除了多层次tiling还包括处理可融合消费者。</p>
 <h2><span id="reference">Reference</span></h2><ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">Ansor: Generating High-Performance Tensor Programs for Deep Learning<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
-</div></div>
+
         </div>
 
         
