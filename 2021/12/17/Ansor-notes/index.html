@@ -183,12 +183,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>169 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>728 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -205,8 +205,29 @@
 
         <div class="article-content markdown-body">
             <p>本文基于Lianmin Zheng等人在OSDI2020上的文章<a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">《Ansor: Generating High-Performance Tensor Programs for Deep Learning》<i class="fas fa-external-link-alt"></i></a>。</p>
-<p>由于之前的工作均存在需要大量工程量开发平台特定优化代码，或者由于搜索空间以及较低效的搜索策略而无法找到高性能实现的问题，Ansor提出了一个针对Deep learing应用的张量程序生成框架。<br>Ansor通过在分层的搜索空间中抽取程序，探索了更多的优化组合，此外通过进化搜索和学好了的成本模型来fine-tune抽出的程序，从而决定最优程序。</p>
-<h2><span id="reference">Reference</span></h2><ul>
+<h2><span id="introduction">Introduction</span></h2><p>由于之前的工作均存在需要大量工程量开发平台特定优化代码，或者由于搜索空间以及较低效的搜索策略而无法找到高性能实现的问题，Ansor提出了一个针对Deep learing应用的张量程序生成框架。<br>Ansor通过在分层的搜索空间中抽取程序，探索了更多的优化组合，此外通过进化搜索和学好了的成本模型来fine-tune抽出的程序，从而决定最优程序。</p>
+<p>当前编译的发展倾向于用户定义high-level声明式语言，编译器为不同硬件平台寻找优化的底层实现，因此一个足够大并能覆盖所有优化程序的搜索空间对该基于搜索的方法非常重要。作者认为之前的工作在这方面存在不足，它们一部分依赖于预定义的手工写好的模板(e.g., TVM, FlexTensor)，另一部分则在评估部分函数时就进行了过多的剪枝(e.g., Halide auto-scheduler)，因此都没有全面地覆盖搜索空间。</p>
+<div align="center"><img src="../../../../images/ansor1.png"></div>
+
+<p>Ansor在实现中面临的三个主要挑战：</p>
+<ul>
+<li>需要自动构建出一个能覆盖尽可能多的针对给定计算的tensor程序的搜索空间</li>
+<li>在避免对比不完整程序的情况下，在一个比现存模板覆盖范围的量级大得多的空间内高效搜索</li>
+<li>当优化一个含有众多子图的DNN时，应当识别出对端到端性能影响最大的子图</li>
+</ul>
+<p>Ansor利用分层表示来覆盖整个搜索空间，通过将high-level结构与low-level的细节分离实现了高层结构的灵活列举与底层细节的有效采样。该搜索空间通过给定计算定义自动构建，随后Ansor从搜索空间中采样完整程序并通过进化搜索和学好的成本模型来fine-tune这些程序。</p>
+<p>论文贡献如下：</p>
+<ul>
+<li>提出对给定计算图生成分层张量程序搜索空间的机制</li>
+<li>一个用来fine-tune的有学好的成本模型的进化策略</li>
+<li>一种用于寻找关键子图的基于梯度下降的调度算法</li>
+<li>通过评估论证了Ansor在各种DNN和硬件平台上效果比现存系统好</li>
+</ul>
+<h2><span id="overview">Overview</span></h2><p>Ansor的整体架构可以表示如下：</p>
+<div align="center"><img src="../../../../images/ansor2.png" width="400"></div>
+
+<p>Ansor使用算子融合将DNN模型从一些常用格式(e.g. ONNX)切分为子图，任务调度器基于梯度下降的调度算法为各个子图分配资源，采样器从搜索空间中随机采样，优化器进行fine-tune。</p>
+<h2><span id="program-sampling">Program Sampling</span></h2><h2><span id="reference">Reference</span></h2><ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi20/presentation/zheng">Ansor: Generating High-Performance Tensor Programs for Deep Learning<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 
@@ -374,7 +395,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Program Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
     </div>
 </div>
         </aside>
