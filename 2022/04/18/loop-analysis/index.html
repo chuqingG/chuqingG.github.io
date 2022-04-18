@@ -325,7 +325,6 @@ mjx-container[display="true"] + br {
 <p>一个是自然循环的极小区间与对应的极大区间的区别为：极小区间不包括循环终点的后继节点，如下图所示。</p>
 <div align="center><img" src="../../../../images/loop1.png" width="450"></div>
 
-<div align="center><img" src="../images/loop1.png" width="450"></div>
 
 <p>在实现时，可以通过控制树表示区间的嵌套结构，其升级版为结构分析，即对过程的所有控制结构进行分类。在编译调度中根据区间内数值的上下界分析内存分配、循环信息等。  </p>
 <p>基于这个原理，Halide对tile size进行符号化的界限推理，将tiling这一优化进行参数化，TVM继承了这个思想。</p>
