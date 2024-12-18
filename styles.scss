@@ -16,3 +16,40 @@
 @import "./sass/sections/contact";
 @import "./sass/sections/hero";
 @import "./sass/sections/projects";
+
+/* Container styles */
+.highlight-box {
+    display: inline-flex;
+    /* Align text neatly */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    background-color: rgb(180, 244, 97);
+    /* Green background color */
+    color: black;
+    /* Text color */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    /* Make the text bold */
+    font-size: 3rem;
+    /* Adjust text size */
+    border-radius: 100px;
+    /* Rounded corners */
+    padding: 10px 20px;
+    /* Space around the text */
+    height: 60px;
+    /* Fixed height */
+    box-sizing: border-box;
+    /* Include padding in size */
+    transition: opacity 0.2s ease;
+    /* Smooth transition effect */
+    border: 0;
+    /* Remove borders */
+}
+
+/* Optional hover effect */
+.highlight-box:hover {
+    opacity: 0.8;
+    /* Slight transparency on hover */
+}

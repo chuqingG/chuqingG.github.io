@@ -1,0 +1,284 @@
+/* Container styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@325;600&display=swap');
+
+@font-face {
+    font-family: 'CustomFont1';
+    /* Custom name for the font */
+    src: url('https://c-p.rmcdn1.net/custom-fonts/font-f65a0ccf-239e-4812-85bc-f9efbb2e24b8.otf') format('opentype');
+    font-weight: normal;
+    /* Set weight if known */
+    font-style: normal;
+    /* Set style if known */
+}
+
+@font-face {
+    font-family: 'CustomFont2';
+    /* Custom name for the font */
+    src: url('https://c-p.rmcdn1.net/custom-fonts/font-b1437d0f-6022-4846-aad1-2dc7d465f192.otf') format('opentype');
+    font-weight: normal;
+    /* Set weight if known */
+    font-style: normal;
+    /* Set style if known */
+}
+
+
+/* Apply the font to your text */
+.my-text-1 {
+    font-family: 'CustomFont1', sans-serif;
+    /* Fallback to sans-serif if needed */
+    https: //c-p.rmcdn1.net/custom-fonts/font-b1437d0f-6022-4846-aad1-2dc7d465f192.otf
+        font-weight: 600;
+    /* Optional: Adjust weight to match your need */
+    font-size: 56px;
+    line-height: 58px;
+    color: rgb(0, 0, 0);
+    /* Text color */
+}
+
+.my-text-2 {
+    font-family: 'CustomFont2', sans-serif;
+    /* Fallback to sans-serif if needed */
+    https: //c-p.rmcdn1.net/custom-fonts/font-b1437d0f-6022-4846-aad1-2dc7d465f192.otf
+        font-weight: 600;
+    /* Optional: Adjust weight to match your need */
+    font-size: 56px;
+    line-height: 58px;
+    color: rgb(0, 0, 0);
+    /* Text color */
+}
+
+body {
+    background-color: #ffffff;
+    /* Replace with your preferred color */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+}
+
+
+.highlight-box {
+    display: inline-flex;
+    /* Align text neatly */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    background-color: #fedd88;
+    /* Green background color */
+    color: #303842;
+    /* Text color */
+    font-family: 'CustomFont1', sans-serif;
+    font-weight: bold;
+    /* Make the text bold */
+    font-size: 3rem;
+    /* Adjust text size */
+    border-radius: 25px;
+    /* Rounded corners */
+    padding: 0px 10px;
+    /* Space around the text */
+    height: 60px;
+    /* Fixed height */
+    box-sizing: border-box;
+    /* Include padding in size */
+    transition: opacity 0.2s ease;
+    /* Smooth transition effect */
+    border: 0;
+    /* Remove borders */
+    font-feature-settings: "liga" 0, "rlig" 0, "dlig" 0, "hlig" 0, "smcp" 0;
+    /* white-space: pre-wrap; */
+    text-rendering: optimizelegibility;
+}
+
+/* Optional hover effect */
+.highlight-box:hover {
+    opacity: 0.8;
+    /* Slight transparency on hover */
+}
+
+.no-highlight-name {
+    display: inline-flex;
+    /* Align text neatly */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    background-color: rgba(0, 0, 0, 0);
+    /* Green background color */
+    color: #303842;
+    /* Text color */
+    font-family: 'CustomFont1', sans-serif;
+    font-weight: bold;
+    /* Make the text bold */
+    font-size: 3rem;
+    /* Adjust text size */
+    border-radius: 100px;
+    /* Rounded corners */
+    padding: 0px 0px;
+    /* Space around the text */
+    height: 60px;
+    /* Fixed height */
+    box-sizing: border-box;
+    /* Include padding in size */
+    transition: opacity 0.2s ease;
+    /* Smooth transition effect */
+    border: 0;
+    /* Remove borders */
+    font-feature-settings: "liga" 0, "rlig" 0, "dlig" 0, "hlig" 0, "smcp" 0;
+    /* white-space: pre-wrap; */
+    text-rendering: optimizelegibility;
+}
+
+.personal-description {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    /* Green background color */
+    color: #303842;
+    /* Text color */
+    font-family: 'CustomFont1', sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+    /* Remove top margin */
+    border-radius: 100px;
+    padding: 0px 0px;
+    /* height: 30px; */
+    line-height: 1;
+    box-sizing: border-box;
+    transition: opacity 0.2s ease;
+    border: 0;
+    font-feature-settings: "liga" 0, "rlig" 0, "dlig" 0, "hlig" 0, "smcp" 0;
+    /* white-space: pre-wrap; */
+    text-rendering: optimizelegibility;
+}
+
+.name-pronun {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    /* Green background color */
+    color: #a79c8e;
+    /* Text color */
+    font-family: 'CustomFont1', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+    /* Remove top margin */
+    border-radius: 100px;
+    padding: 0px 0px;
+    /* height: 30px; */
+    line-height: 1;
+    box-sizing: border-box;
+    transition: opacity 0.2s ease;
+    border: 0;
+    font-feature-settings: "liga" 0, "rlig" 0, "dlig" 0, "hlig" 0, "smcp" 0;
+    /* white-space: pre-wrap; */
+    text-rendering: optimizelegibility;
+}
+
+
+.custom-link {
+    color: #ffffff;
+    /* White color for text */
+    font-family: 'CustomFont1', sans-serif;
+    /* Clean, readable font */
+    font-weight: 600;
+    /* Semi-bold */
+    font-size: 40px;
+    /* Large font size */
+    text-decoration: underline;
+    /* Underline the text */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
+}
+
+.custom-link:hover {
+    color: rgb(164, 225, 247);
+    ;
+    /* Change to light green on hover */
+    text-decoration: none;
+    /* Remove underline on hover */
+}
+
+/* timeline */
+
+/* Container for Text Blocks */
+.text-blocks-container {
+    display: flex;
+    justify-content: space-between;
+    /* Distribute blocks evenly */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 50px auto;
+    gap: 20px;
+    /* Reduced space between blocks */
+}
+
+/* Individual Text Block */
+.text-block {
+    width: 31%;
+    /* Each block occupies 22% of the width */
+    font-family: 'CustomFont1', sans-serif;
+    color: #000;
+    line-height: 1.4;
+    /* Reduced line spacing within each block */
+    font-size: 18px;
+}
+
+.text-block p {
+    margin: 0;
+}
+
+/* Block Numbers */
+.block-number {
+    font-size: 16px;
+    color: #aaa;
+    display: block;
+    margin-bottom: 2px;
+    /* Slightly smaller spacing under numbers */
+}
+
+/* Highlighted Text */
+.highlight {
+    background-color: #f3e9ea;
+    /* Light green highlight */
+    padding: 4px 6px;
+    font-weight: bold;
+    border-radius: 4px;
+    /* Optional for smoother edges */
+}
+
+/* Colored Underlined Text */
+.underlined {
+    text-decoration: underline;
+    text-decoration-color: #dc8ea5;
+    /* Light green underline color */
+    text-decoration-thickness: 4px;
+    /* Thickness of the underline */
+    text-underline-offset: 0px;
+    /* Adjust distance of underline from text */
+    font-weight: bold;
+    /* Bold text for emphasis */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .text-blocks-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        /* Reduce gap further for small screens */
+    }
+
+    .text-block {
+        width: 90%;
+        /* Stack blocks and make them full width */
+        text-align: center;
+    }
+}
