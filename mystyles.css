@@ -395,6 +395,7 @@ body {
 
 .text-block p {
     margin: 0;
+    font-size: clamp(14px, 1.8vw, 18px);
 }
 
 /* Block Numbers */
