@@ -118,12 +118,12 @@
     /* Enlarge slightly on hover */
 }
 
-
 body {
     margin: 0;
     /* Remove default margins */
     padding: 0;
     padding-top: 100px;
+    /* padding-top: calc(4rem + 2vw); */
     /* Remove default paddings */
     background: #FAF3E0;
 
@@ -305,8 +305,9 @@ body {
     /* Distribute blocks evenly */
     align-items: flex-start;
     flex-wrap: wrap;
-    max-width: 90%;
+    max-width: 1000px;
     margin: 50px auto;
+    /* margin-left: 15px; */
     gap: 20px;
     /* Reduced space between blocks */
 }
@@ -560,55 +561,12 @@ a.underlined:hover {
     font-weight: bold;
 }
 
-/* Phone Projects Section */
-.phone-projects {
-    display: flex;
-    gap: 20px;
-    /* Space between phone projects */
-}
-
-.phone-project {
-    text-align: center;
-    max-width: 150px;
-}
-
-.phone-image {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
 
 .project-details p {
     font-size: 16px;
     margin: 5px 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .top-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .top-image {
-        max-width: 90%;
-        margin-bottom: 20px;
-    }
-
-    .bottom-section {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .phone-projects {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .phone-project {
-        max-width: 90%;
-    }
-}
 
 /** ===============my projects============== **/
 /* Section Container */
@@ -632,7 +590,7 @@ a.underlined:hover {
     /* Align text and image to the top */
     gap: 20px;
     /* Adds space between items */
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     position: relative;
     /* Allows control over stacking */
 }
