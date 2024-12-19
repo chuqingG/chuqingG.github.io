@@ -418,7 +418,7 @@ body {
 
 /* Colored Underlined Text */
 
-.myunderlined {
+a.myunderlined {
     position: relative;
     display: inline-block;
     /* Ensures correct positioning for pseudo-element */
@@ -429,7 +429,15 @@ body {
     /* Optional bold emphasis */
 }
 
-.myunderlined::after {
+@media (max-width: 768px) {
+    a.myunderlined {
+        font-size: clamp(14px, 1.8vw, 18px)
+            /* Adjust only if necessary */
+    }
+}
+
+
+a.myunderlined::after {
     content: "";
     position: absolute;
     bottom: 3px;
@@ -445,7 +453,7 @@ body {
     /* Places the underline behind the text */
 }
 
-.myunderlined:hover {
+a.myunderlined:hover {
     color: #dc8ea5;
     /* Slight color change on hover */
 }
