@@ -418,26 +418,20 @@ body {
 
 /* Colored Underlined Text */
 
-a.myunderlined {
+.myunderlined {
     position: relative;
     display: inline-block;
     /* Ensures correct positioning for pseudo-element */
     font-weight: bold;
     text-decoration: none;
     color: black;
-    font-size: clamp(14px, 1.8vw, 18px) !important;
+    /* font-size: clamp(14px, 1.8vw, 18px) !important; */
     /* Optional bold emphasis */
 }
 
-@media (max-width: 768px) {
-    a.myunderlined {
-        font-size: clamp(14px, 1.8vw, 18px)
-            /* Adjust only if necessary */
-    }
-}
 
 
-a.myunderlined::after {
+.myunderlined::after {
     content: "";
     position: absolute;
     bottom: 3px;
@@ -453,7 +447,7 @@ a.myunderlined::after {
     /* Places the underline behind the text */
 }
 
-a.myunderlined:hover {
+.myunderlined:hover {
     color: #dc8ea5;
     /* Slight color change on hover */
 }
@@ -462,6 +456,11 @@ a.myunderlined:hover {
     color: black;
     text-decoration: underline;
     /* Keep underline */
+}
+
+.black-link:hover {
+    color: #dc8ea5;
+    /* Slight color change on hover */
 }
 
 
