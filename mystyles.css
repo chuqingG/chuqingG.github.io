@@ -420,11 +420,15 @@ body {
 /* Colored Underlined Text */
 
 .myunderlined {
-    /* position: relative; */
+    position: relative;
     /* display: inline-block; */
     /* Ensures correct positioning for pseudo-element */
     /* font-weight: bold; */
-    text-decoration: none;
+    /* text-decoration: none; */
+    text-decoration: underline;
+    text-decoration-color: #dc8ea5;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 1px;
     color: black;
     /* font-size: clamp(14px, 1.8vw, 18px) !important; */
     /* Optional bold emphasis */
@@ -432,21 +436,6 @@ body {
 
 
 
-.myunderlined::after {
-    content: "";
-    position: absolute;
-    bottom: 3px;
-    /* Aligns underline with the bottom of the text */
-    left: 0;
-    width: 100%;
-    /* Spans the full width of the text */
-    height: 4px;
-    /* Thickness of the underline */
-    background-color: #dc8ea5;
-    /* Light green underline color */
-    z-index: -1;
-    /* Places the underline behind the text */
-}
 
 .myunderlined:hover {
     color: #dc8ea5;
