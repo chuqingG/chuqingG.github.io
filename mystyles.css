@@ -420,10 +420,10 @@ body {
 /* Colored Underlined Text */
 
 .myunderlined {
-    position: relative;
-    display: inline-block;
+    /* position: relative; */
+    /* display: inline-block; */
     /* Ensures correct positioning for pseudo-element */
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: none;
     color: black;
     /* font-size: clamp(14px, 1.8vw, 18px) !important; */
