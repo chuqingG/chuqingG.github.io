@@ -1,620 +1,217 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="ChuqingG">
-    
-    <title>
-        
-        Chuqing Gao&#39;s Home
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <link rel="shortcut icon" href="/images/strawberry2.svg">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"chuqingg.github.io","root":"/","language":"zh-cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#9370DB","avatar":"/images/cat.png","favicon":"/images/strawberry2.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Work for stronger systems."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-  </script>
-<meta name="generator" content="Hexo 5.4.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuqing' Home</title>
+    <link rel="stylesheet" href="mystyles.css">
+</head>
 
 <body>
-<div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
-    
-
-    
-</div>
-
-
-<main class="page-container">
-
-    
-        <div class="first-screen-container flex-center fade-in-down-animation">
-    <div class="content flex-center">
-        <div class="description">
-            Work for stronger systems.
+    <header class="hero">
+        <div class="header-left">
+            <div class="no-highlight-name">I'm</div>
+            <div class="highlight-box">Chuqing Gao,</div>
+            <p class="personal-description">a CS PhD student.</p>
+            <p class="name-pronun">Sounds like chew-ching &#x1F60B&#x1FA99, if that makes it easier for you.</p>
         </div>
-        
-            <div class="s-icon-list">
-                
-                    
-                        
-                            <span class="s-icon-item github">
-                                <a target="_blank" href="https://github.com/chuqingG">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </span>
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                        
-                            <span class="s-icon-item email">
-                                <a href="mailto:wendy0307@mail.ustc.edu.cn">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                            </span>
-                        
-                    
-                
-                    
-                        
-                            <span class="s-icon-item linkedin">
-                                <a target="_blank" href="https://www.linkedin.com/in/chuqing-gao-47b1051a5/">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </span>
-                        
-                    
-                
-            </div>
-        
-    </div>
-</div>
-
-    
-
-    <div class="page-main-content">
-
-        <div class="page-main-content-top">
-            <header class="header-wrapper">
-
-    <div class="header-content has-first-screen">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                Chuqing Gao&#39;s Home
+        <div class="header-right">
+            <p>{last_name}688@purdue.edu</p>
+            <a href="https://www.linkedin.com/in/chuqing-gao" target="_blank" class="linkedin-link">
+                <img src="assets/linkedin.png" alt="LinkedIn" class="linkedin-logo" />
             </a>
         </div>
+    </header>
 
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class="active"
-                               href="/"
-                            >
-                                HOME
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                ARCHIVES
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                TAGS
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                ABOUT
-                            </a>
-                        </li>
-                    
-                    
-                </ul>
+    <section id="about">
+        <div class="text-blocks-container">
+            <!-- Block 1 -->
+            <div class="text-block">
+                <span class="block-number">Present</span>
+                <p>
+                    Work with Prof. <a href="https://www.cs.purdue.edu/homes/csjgwang/" class="underlined">Jianguo
+                        Wang</a> at Purdue University. Focus on
+                    <span class="highlight">database for LLM, database optimization and large-scale</span>
+                    data
+                    solutions.
+                </p>
+
             </div>
-            <div class="mobile">
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
+
+            <!-- Block 2 -->
+            <div class="text-block">
+                <span class="block-number">2018-2022</span>
+                <p>
+                    Earned my bachelor's degree in CS at <span class="highlight">University of Science and
+                        Technology of China</span>, where I'm
+                    fortunate to work with Prof. <a href="https://mr-cheng-li.github.io/" class="underlined">Cheng
+                        Li</a>.
+                </p>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="text-block">
+                <span class="block-number">2020-2021</span>
+                <p>
+                    Worked as an intern of the <a
+                        href="https://www.microsoft.com/en-us/research/group/systems-research-group-asia/"
+                        class="underlined">System Research Group</a> in Microsoft
+                    Research Asia, collaborating with Dr. Ying Cao on <span class="highlight">deep learning
+                        compiler</span>.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="project-layout">
+        <h1 class="section-title">Publications</h1>
+
+        <div class="project">
+            <div class="project-content">
+                <p class="project-title"><span class="highlight">SIGMOD'24</span> Revisiting B-tree Compression:
+                    An Experimental Study.</p>
+                <p class="project-author"><span class="author-me">Chuqing Gao</span>, Shreya Ballijepalli, Jianguo
+                    Wang.</p>
+                <p class="project-description">
+                    This benchmark revisits and evaluates 7 B-tree compression techniques, offering a systematic
+                    comparison of their effectiveness in modern database environments. By analyzing space efficiency,
+                    query performance, and insertion trade-offs, our study provides practical guidance for optimizing
+                    B-tree implementations in real-world systems.
+                </p>
+                <div class="project-buttons">
+                    <a href="https://github.com/chuqingG/BtreeComp" class="link-square">Code</a>
+                    <a href="https://dl.acm.org/doi/10.1145/3654972" class="link-square">Paper</a>
+                </div>
+            </div>
+            <div class="project-image">
+                <img src="assets/btree2.png" alt="Btree Compression">
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-image">
+                <img src="assets/dlsm.png" alt="dLSM">
+            </div>
+            <div class="project-content">
+                <p class="project-title"><span class="highlight">VLDB Journal'24</span> Optimizing LSM-based Indexes for
+                    Disaggregated Memory. </p>
+                <p class="project-author">Ruihong Wang, <span class="author-me">Chuqing Gao</span>, Jianguo Wang,
+                    Prishita Kadam, M. Tamer Özsu, Walid G. Aref.</p>
+                <p class="project-description">
+                    This extended work on <a href="https://ieeexplore.ieee.org/document/10184823"
+                        class="black-link">dLSM</a>
+                    introduces
+                    improvement in near-data compaction for disaggregated memory
+                    systems. An adaptive compaction strategy is proposed to dynamically optimize the distribution
+                    of compaction tasks between compute and memory nodes based on hardware configurations and real-time
+                    workload conditions.
+                </p>
+                <!-- <p class="project-description">
+                    Additional innovations include techniques for efficient garbage collection and optimizations to
+                    reduce data movement during compaction. These new contributions build upon the original dLSM
+                    framework, offering enhanced performance and scalability, particularly for complex workloads in
+                    modern disaggregated memory architectures.
+                </p> -->
+                <div class="project-buttons">
+                    <a href="https://github.com/ruihong123/dLSM" class="link-square">Code</a>
+                    <a href="https://link.springer.com/article/10.1007/s00778-024-00863-y" class="link-square">Paper</a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/">HOME</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">ARCHIVES</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">TAGS</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">ABOUT</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
+    </section>
 
 
-        </div>
+    <section class="project-layout">
+        <h1 class="section-title">Projects</h1>
 
-        <div class="page-main-content-middle">
+        <div class="project">
 
-            <div class="main-content">
+            <div class="project">
 
-                
-                    <div class="home-content-container fade-in-down-animation">
-    <ul class="home-article-list">
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/04/18/loop-analysis/">
-                        深度学习编译器中的循环分析算法
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        深度学习编译器中应用的循环嵌套分析算法可以分为两大类，即区间分析（如TVM, Halide）和依赖分析（Tiramisu）。
-区间分析区间分析指将流图划分为不同的区域，将每个区域抽象成一个新的节点，不断重复这个过程得到抽象流图。
-
-极大区间（maxi...
-                    
+                <div class="project-content">
+                    <p class="project-title">Deep Learning Compiler Optimization <span
+                            class="project-year">(2021)</span>
+                    </p>
+                    <p class="project-author">Intern Project @ MSR-Asia</p>
+                    <p class="project-description">
+                        Conducted a case study on LSTM and contributed to the development of a deep learning compiler
+                        system, focusing on operator fusion,
+                        memory optimization, and data flow efficiency for frameworks like PyTorch and TensorFlow.
+                        The system, FractalTensor, was later published on SOSP'24.
+                    </p>
+                    <!-- <p class="project-description">
+                    Additional innovations include techniques for efficient garbage collection and optimizations to
+                    reduce data movement during compaction. These new contributions build upon the original dLSM
+                    framework, offering enhanced performance and scalability, particularly for complex workloads in
+                    modern disaggregated memory architectures.
+                </p> -->
+                    <div class="project-buttons">
+                        <!-- <a href="https://github.com/ruihong123/dLSM" class="link-square">Code</a> -->
+                        <a href="https://www.microsoft.com/en-us/research/publication/uncovering-nested-data-parallelism-and-data-reuse-in-dnn-computation-with-fractaltensor/"
+                            class="link-square">Paper</a>
+                    </div>
                 </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Apr 18 2022 21:24:13 GMT+0900">2022-04-18</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Compile/">Compile</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2022/04/18/loop-analysis/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/12/17/Ansor-notes/">
-                        Ansor论文笔记
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        本文基于Lianmin Zheng等人在OSDI2020上的文章《Ansor: Generating High-Performance Tensor Programs for Deep Learning》。
-Introduction由于之前的工作均存...
-                    
+                <div class="project-image">
+                    <img src="assets/DeepLearning.png" alt="deeplearning">
                 </div>
+            </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Dec 17 2021 20:49:51 GMT+0900">2021-12-17</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Compile/">Compile</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/12/17/Ansor-notes/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/12/10/TVM-notes/">
-                        TVM论文阅读笔记
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        本文基于Tianqi Chen等人在OSDI’18的文章《TVM: An Automated End-to-End Optimizing Compiler for Deep Learning》。
-Overview
-TVM 架构
-
-
-
-
-TVM api...
-                    
+            <div class="project-image">
+                <img src="assets/openlookeng.png" alt="openlookeng">
+            </div>
+            <div class="project-content">
+                <p class="project-title"> SQL Query Plan Optimization <span class="project-year">(2020)</span></p>
+                <!-- <p class="project-author"><span class="author-me">Chuqing Gao</span>, Jiacheng Wan, Xingmei Wang,
+                Zhanghan Wang, Zhiyuan Huang (alphabetical order)</p> -->
+                <p class="project-description">
+                    We developed a heuristic algorithm for optimizing left-deep-join tree in SQL query plan and
+                    redesigned the compute flow,
+                    achieving obvious performance improvement on the given workload on a commercial open-source
+                    database engine. This project, as part of the Openlookeng performance optimization track, win the
+                    national championship.
+                </p>
+                <div class="project-buttons">
+                    <a href="https://en.ustc.edu.cn/info/1007/4034.htm" class="link-square">News</a>
+                    <!-- <a href="https://dl.acm.org/doi/10.1145/3654972" class="link-square">Paper</a> -->
                 </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Dec 10 2021 21:39:47 GMT+0900">2021-12-10</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Compile/">Compile</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/12/10/TVM-notes/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/11/25/matmul-optimization/">
-                        矩阵乘法在Cuda中的优化
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        矩阵乘法作为Deep Learning中的重要计算，通过其在cuda上的几种基本优化方式了解Deep Learning计算的优化方向。以下全部以两个正方形矩阵相乘的kernel写法为例。
-Naive Implementation12345678__g...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Nov 25 2021 15:58:06 GMT+0900">2021-11-25</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Compile/">Compile</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Cuda/">Cuda</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/11/25/matmul-optimization/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-    </ul>
-
-    <div class="home-paginator">
-        <div class="paginator">
-    
-
-    
-</div>
-
-    </div>
-</div>
-
-
-                
             </div>
 
         </div>
 
-        <div class="page-main-content-bottom">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-              <span>2020</span>
-              -
-            
-            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">ChuqingG</a>
-        </div>
-        
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv">
-                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
+        <div class="project">
+            <div class="project-content">
+                <p class="project-title"> Graph DataBase File System <span class="project-year">(2019)</span></p>
+                <p class="project-author"><span class="author-me">Chuqing Gao</span>, Jiacheng Wan, Xingmei Wang,
+                    Zhanghan Wang, Zhiyuan Huang (alphabetical order)</p>
+                <p class="project-description">
+                    We utilize graph database Neo4j to build a FUSE-based file system with a fantastic
+                    web UI. The files are connected in the graph based on their contents. We used some machine learning
+                    techniques to extract keywords and description. Due to the limitation of early AI techniques, GDBFS
+                    can only process some simple files.
+                </p>
+                <div class="project-buttons">
+                    <a href="https://github.com/USTC-CS-Course-Resource/GDBFS" class="link-square">Code</a>
+                    <!-- <a href="https://dl.acm.org/doi/10.1145/3654972" class="link-square">Paper</a> -->
+                </div>
             </div>
-        
-        <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+            <div class="project-image">
+                <img src="assets/gdbfs.png" alt="gdbfs">
+            </div>
         </div>
-        
-        
-    </div>
-</footer>
 
-        </div>
-    </div>
-
-    
-
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
-
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
-
-        <li class="tools-item tool-expand-width flex-center">
-            <i class="fas fa-arrows-alt-h"></i>
-        </li>
-
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
-
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-
-</main>
+    </section>
 
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
-
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
-
-
-
-
-<div class="post-scripts">
-    
-</div>
-
-
+    <footer class="site-footer">
+        <!-- <p>Based in IN, United States</p> -->
+        <p>Chuqing Gao © 2024. All rights reserved.</p>
+    </footer>
 
 </body>
+
 </html>
