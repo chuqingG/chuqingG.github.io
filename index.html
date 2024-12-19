@@ -10,85 +10,208 @@
 
 <body>
     <header class="hero">
-        <!-- <h1>Your Name</h1> -->
-        <div class="no-highlight-name">
-            I'm
+        <div class="header-left">
+            <div class="no-highlight-name">I'm</div>
+            <div class="highlight-box">Chuqing Gao,</div>
+            <p class="personal-description">a CS PhD student.</p>
+            <p class="name-pronun">Sounds like chew-ching &#x1F60B&#x1FA99, if that makes it easier for you.</p>
         </div>
-        <div class="highlight-box">
-            Chuqing Gao,
+        <div class="header-right">
+            <p>{last_name}688@purdue.edu</p>
+            <a href="https://www.linkedin.com/in/chuqing-gao" target="_blank" class="linkedin-link">
+                <img src="assets/linkedin.png" alt="LinkedIn" class="linkedin-logo" />
+            </a>
         </div>
-        <p class="personal-description">a CS PhD student.</p>
-        <p class="name-pronun">Sounds like chew-ching &#x1F60B&#x1FA99, if that makes it easier for you.</p>
     </header>
+
     <section id="about">
         <div class="text-blocks-container">
             <!-- Block 1 -->
             <div class="text-block">
                 <span class="block-number">Present</span>
                 <p>
-                    <span class="underlined">8+ years of experience</span> in interface, website and application design
+                    Work with Prof. <a href="https://www.cs.purdue.edu/homes/csjgwang/" class="underlined">Jianguo
+                        Wang</a> at Purdue University. Focus on
+                    <span class="highlight">database for LLM, database optimization and large-scale</span>
+                    data
+                    solutions.
                 </p>
+
             </div>
 
             <!-- Block 2 -->
             <div class="text-block">
-                <span class="block-number">(2)</span>
+                <span class="block-number">2018-2022</span>
                 <p>
-                    Designed and delivered <span class="highlight">100+ projects</span> in eCommerce, Web3, FinTech, B2C
-                    and other industries
+                    Earned my bachelor's degree in CS at <span class="highlight">University of Science and
+                        Technology of China</span>, where I'm
+                    fortunate to work with Prof. <a href="https://mr-cheng-li.github.io/" class="underlined">Cheng
+                        Li</a>.
                 </p>
             </div>
 
             <!-- Block 3 -->
             <div class="text-block">
-                <span class="block-number">(3)</span>
+                <span class="block-number">2020-2021</span>
                 <p>
-                    Clients include <span class="highlight">Apple, Universal Studios</span> and other tech, financial,
-                    product companies and startups
+                    Worked as an intern of the <a
+                        href="https://www.microsoft.com/en-us/research/group/systems-research-group-asia/"
+                        class="underlined">System Research Group</a> in Microsoft
+                    Research Asia, collaborating with Dr. Ying Cao on <span class="highlight">deep learning
+                        compiler</span>.
                 </p>
             </div>
         </div>
 
+    </section>
+
+    <section class="project-layout">
+        <h1 class="section-title">Publications</h1>
+
+        <div class="project">
+            <div class="project-content">
+                <p class="project-title"><span class="highlight">SIGMOD'24</span> Revisiting B-tree Compression:
+                    An Experimental Study.</p>
+                <p class="project-author"><span class="author-me">Chuqing Gao</span>, Shreya Ballijepalli, Jianguo
+                    Wang.</p>
+                <p class="project-description">
+                    This benchmark revisits and evaluates 7 B-tree compression techniques, offering a systematic
+                    comparison of their effectiveness in modern database environments. By analyzing space efficiency,
+                    query performance, and insertion trade-offs, our study provides practical guidance for optimizing
+                    B-tree implementations in real-world systems.
+                </p>
+                <div class="project-buttons">
+                    <a href="https://github.com/chuqingG/BtreeComp" class="link-square">Code</a>
+                    <a href="https://dl.acm.org/doi/10.1145/3654972" class="link-square">Paper</a>
+                </div>
+            </div>
+            <div class="project-image">
+                <img src="assets/btree2.png" alt="Btree Compression">
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-image">
+                <img src="assets/dlsm.png" alt="dLSM">
+            </div>
+            <div class="project-content">
+                <p class="project-title"><span class="highlight">VLDB Journal'24</span> Optimizing LSM-based Indexes for
+                    Disaggregated Memory. </p>
+                <p class="project-author">Ruihong Wang, <span class="author-me">Chuqing Gao</span>, Jianguo Wang,
+                    Prishita Kadam, M. Tamer Özsu, Walid G. Aref.</p>
+                <p class="project-description">
+                    This extended work on <a href="https://ieeexplore.ieee.org/document/10184823"
+                        class="black-link">dLSM</a>
+                    introduces
+                    improvement in near-data compaction for disaggregated memory
+                    systems. An adaptive compaction strategy is proposed to dynamically optimize the distribution
+                    of compaction tasks between compute and memory nodes based on hardware configurations and real-time
+                    workload conditions.
+                </p>
+                <!-- <p class="project-description">
+                    Additional innovations include techniques for efficient garbage collection and optimizations to
+                    reduce data movement during compaction. These new contributions build upon the original dLSM
+                    framework, offering enhanced performance and scalability, particularly for complex workloads in
+                    modern disaggregated memory architectures.
+                </p> -->
+                <div class="project-buttons">
+                    <a href="https://github.com/ruihong123/dLSM" class="link-square">Code</a>
+                    <a href="https://link.springer.com/article/10.1007/s00778-024-00863-y" class="link-square">Paper</a>
+                </div>
+            </div>
+        </div>
 
     </section>
 
-    <!-- <div class="timeline-container">
-            Top Segment: Stanford
-    <div class="timeline-segment above" style="left: 10%; width: 60%; background-color: #f8d7d6;"></div>
-    <div class="timeline-item above">
-        <img src="stanford.jpg" alt="Stanford" class="timeline-icon">
-        <p class="timeline-text">Stanford University</p>
-        <span class="timeline-date">2018</span>
-    </div>  -->
 
-    <!-- Bottom Segment: Microsoft -->
-    <!-- <div class="timeline-segment below" style="left: 55%; width: 15%; background-color: #b2e6b5;"></div>
-    <div class="timeline-item below">
-        <img src="microsoft.jpg" alt="Microsoft" class="timeline-icon">
-        <p class="timeline-text">Microsoft</p>
-        <span class="timeline-date">2022</span>
-    </div> -->
+    <section class="project-layout">
+        <h1 class="section-title">Projects</h1>
 
-    <!-- Top Segment: MIT -->
-    <!-- <div class="timeline-segment above" style="left: 70%; width: 30%; background-color: #d7eafc;"></div>
-    <div class="timeline-item above">
-        <img src="mit.jpg" alt="MIT" class="timeline-icon">
-        <p class="timeline-text">MIT</p>
-        <span class="timeline-date">2023</span>
-    </div>
-    </div> -->
+        <div class="project">
+
+            <div class="project">
+
+                <div class="project-content">
+                    <p class="project-title">Deep Learning Compiler Optimization <span
+                            class="project-year">(2021)</span>
+                    </p>
+                    <p class="project-author">Intern Project @ MSR-Asia</p>
+                    <p class="project-description">
+                        Conducted a case study on LSTM and contributed to the development of a deep learning compiler
+                        system, focusing on operator fusion,
+                        memory optimization, and data flow efficiency for frameworks like PyTorch and TensorFlow.
+                        The system, FractalTensor, was later published on SOSP'24.
+                    </p>
+                    <!-- <p class="project-description">
+                    Additional innovations include techniques for efficient garbage collection and optimizations to
+                    reduce data movement during compaction. These new contributions build upon the original dLSM
+                    framework, offering enhanced performance and scalability, particularly for complex workloads in
+                    modern disaggregated memory architectures.
+                </p> -->
+                    <div class="project-buttons">
+                        <!-- <a href="https://github.com/ruihong123/dLSM" class="link-square">Code</a> -->
+                        <a href="https://www.microsoft.com/en-us/research/publication/uncovering-nested-data-parallelism-and-data-reuse-in-dnn-computation-with-fractaltensor/"
+                            class="link-square">Paper</a>
+                    </div>
+                </div>
+                <div class="project-image">
+                    <img src="assets/DeepLearning.png" alt="deeplearning">
+                </div>
+            </div>
+
+            <div class="project-image">
+                <img src="assets/openlookeng.png" alt="openlookeng">
+            </div>
+            <div class="project-content">
+                <p class="project-title"> SQL Query Plan Optimization <span class="project-year">(2020)</span></p>
+                <!-- <p class="project-author"><span class="author-me">Chuqing Gao</span>, Jiacheng Wan, Xingmei Wang,
+                Zhanghan Wang, Zhiyuan Huang (alphabetical order)</p> -->
+                <p class="project-description">
+                    We developed a heuristic algorithm for optimizing left-deep-join tree in SQL query plan and
+                    redesigned the compute flow,
+                    achieving obvious performance improvement on the given workload on a commercial open-source
+                    database engine. This project, as part of the Openlookeng performance optimization track, win the
+                    national championship.
+                </p>
+                <div class="project-buttons">
+                    <a href="https://en.ustc.edu.cn/info/1007/4034.htm" class="link-square">News</a>
+                    <!-- <a href="https://dl.acm.org/doi/10.1145/3654972" class="link-square">Paper</a> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="project">
+            <div class="project-content">
+                <p class="project-title"> Graph DataBase File System <span class="project-year">(2019)</span></p>
+                <p class="project-author"><span class="author-me">Chuqing Gao</span>, Jiacheng Wan, Xingmei Wang,
+                    Zhanghan Wang, Zhiyuan Huang (alphabetical order)</p>
+                <p class="project-description">
+                    We utilize graph database Neo4j to build a FUSE-based file system with a fantastic
+                    web UI. The files are connected in the graph based on their contents. We used some machine learning
+                    techniques to extract keywords and description. Due to the limitation of early AI techniques, GDBFS
+                    can only process some simple files.
+                </p>
+                <div class="project-buttons">
+                    <a href="https://github.com/USTC-CS-Course-Resource/GDBFS" class="link-square">Code</a>
+                    <!-- <a href="https://dl.acm.org/doi/10.1145/3654972" class="link-square">Paper</a> -->
+                </div>
+            </div>
+            <div class="project-image">
+                <img src="assets/gdbfs.png" alt="gdbfs">
+            </div>
+        </div>
+
+    </section>
 
 
 
-    <p>
-        <a class="custom-link" href="https://www.linkedin.com/in/chuqing-gao" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-        </a>
-    </p>
 
-    <footer>
-        <p>© 2024 Your Name. All rights reserved.</p>
+    <footer class="site-footer">
+        <!-- <p>Based in IN, United States</p> -->
+        <p>Chuqing Gao © 2024. All rights reserved.</p>
     </footer>
+
 </body>
 
 </html>

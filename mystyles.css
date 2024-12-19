@@ -21,6 +21,25 @@
     /* Set style if known */
 }
 
+@font-face {
+    font-family: 'CustomFont3';
+    /* Custom name for the font */
+    src: url('https://c-p.rmcdn1.net/custom-fonts/font-152f4ece-e3a3-4c60-a008-ac8d76483488.otf') format('opentype');
+    font-weight: normal;
+    /* Set weight if known */
+    font-style: normal;
+    /* Set style if known */
+}
+
+@font-face {
+    font-family: 'CustomFont4';
+    /* Custom name for the font */
+    src: url('https://c-p.rmcdn1.net/custom-fonts/font-d7ff70c1-c9f4-4edd-92a6-ab0a6687ad4d.otf') format('opentype');
+    font-weight: normal;
+    /* Set weight if known */
+    font-style: normal;
+    /* Set style if known */
+}
 
 /* Apply the font to your text */
 .my-text-1 {
@@ -47,13 +66,80 @@
     /* Text color */
 }
 
+.hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAF3E0;
+    /* Same as the background */
+    padding: 10px 10px;
+    /* Adjust padding */
+    z-index: 1000;
+    /* Ensure it's on top of other elements */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    /* Add a subtle shadow */
+}
+
+.header-left {
+    display: inline-block;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-right p {
+    margin: 4px 20px;
+    /* Adjust spacing between lines */
+    font-size: 0.9rem;
+    font-family: 'CustomFont3';
+    color: #555;
+    /* Lighter text for contrast */
+}
+
+.linkedin-logo {
+    width: 25px;
+    /* Set the width */
+    height: 25px;
+    /* Maintain aspect ratio */
+    margin-right: 25px;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.linkedin-link:hover .linkedin-logo {
+    opacity: 1;
+    /* Fully opaque on hover */
+    transform: scale(1.1);
+    /* Enlarge slightly on hover */
+}
+
+
 body {
-    background-color: #ffffff;
-    /* Replace with your preferred color */
     margin: 0;
-    /* Remove default margin */
+    /* Remove default margins */
     padding: 0;
-    /* Remove default padding */
+    padding-top: 100px;
+    /* Remove default paddings */
+    background: #FAF3E0;
+
+
+    /* background-image: url('./assets/yellowblue.png'); */
+    /* Path to your image */
+    background-size: cover;
+    /* Scales the image to cover the entire screen */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent tiling */
+    height: 100vh;
+    /* Ensure it covers the entire viewport height */
+    width: 100%;
+    /* Ensure it spans the entire viewport width */
 }
 
 
@@ -115,6 +201,9 @@ body {
     border-radius: 100px;
     /* Rounded corners */
     padding: 0px 0px;
+    margin-top: 10px;
+    margin-left: 10px;
+
     /* Space around the text */
     height: 60px;
     /* Fixed height */
@@ -162,12 +251,14 @@ body {
     background-color: rgba(0, 0, 0, 0);
     /* Green background color */
     color: #a79c8e;
+    display: block;
     /* Text color */
     font-family: 'CustomFont1', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
-    margin-top: 0;
+    margin-top: 2px;
     margin-bottom: 12px;
+    margin-left: 10px;
     /* Remove top margin */
     border-radius: 100px;
     padding: 0px 0px;
@@ -246,26 +337,54 @@ body {
 
 /* Highlighted Text */
 .highlight {
-    background-color: #f3e9ea;
+    background-color: #edd7d9;
     /* Light green highlight */
-    padding: 4px 6px;
+    padding: 1px 6px;
     font-weight: bold;
-    border-radius: 4px;
+    border-radius: 6px;
     /* Optional for smoother edges */
 }
 
 /* Colored Underlined Text */
-.underlined {
-    text-decoration: underline;
-    text-decoration-color: #dc8ea5;
-    /* Light green underline color */
-    text-decoration-thickness: 4px;
-    /* Thickness of the underline */
-    text-underline-offset: 0px;
-    /* Adjust distance of underline from text */
+
+a.underlined {
+    position: relative;
+    display: inline-block;
+    /* Ensures correct positioning for pseudo-element */
     font-weight: bold;
-    /* Bold text for emphasis */
+    text-decoration: none;
+    color: black;
+    /* Optional bold emphasis */
 }
+
+a.underlined::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    /* Aligns underline with the bottom of the text */
+    left: 0;
+    width: 100%;
+    /* Spans the full width of the text */
+    height: 4px;
+    /* Thickness of the underline */
+    background-color: #dc8ea5;
+    /* Light green underline color */
+    z-index: -1;
+    /* Places the underline behind the text */
+}
+
+a.underlined:hover {
+    color: #dc8ea5;
+    /* Slight color change on hover */
+}
+
+.black-link {
+    color: black;
+    text-decoration: underline;
+    /* Keep underline */
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -280,5 +399,443 @@ body {
         width: 90%;
         /* Stack blocks and make them full width */
         text-align: center;
+    }
+}
+
+/* Selected Projects Section */
+.selected-projects {
+    /* background-color: #fdfbf7; */
+    /* Slight cream background */
+    padding: 40px 0px;
+    /* Padding around the section */
+}
+
+/* .selected-projects  */
+.section-title {
+    text-align: center;
+    font-family: 'CustomFont1';
+    font-size: 30px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Top Row Layout */
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    /* Add spacing between the two items */
+    margin-bottom: 60px;
+}
+
+
+.gray-text {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.year {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Bottom Section */
+.bottom-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.highlighted-text {
+    font-size: 18px;
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    color: #000;
+}
+
+.underlined {
+    text-decoration: underline;
+    text-decoration-color: #b0f45d;
+    /* Green underline */
+    text-decoration-thickness: 4px;
+    text-underline-offset: 0px;
+    font-weight: bold;
+}
+
+.bottom-image {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-row {
+        flex-direction: column;
+        gap: 20px;
+        /* Reduce gap between projects on smaller screens */
+    }
+
+    .project-image {
+        max-width: 120px;
+    }
+
+    .project-image.laptop {
+        max-width: 300px;
+    }
+
+    .highlighted-text {
+        font-size: 18px;
+    }
+}
+
+/* Follow-Up Section */
+.selected-projects-followup {
+    /* background-color: #fdfbf7; */
+    /* Matches previous section */
+    padding: 60px 20px;
+}
+
+/* Top Section */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.top-image {
+    max-width: 60%;
+    /* Large image */
+    border-radius: 10px;
+}
+
+.project-details {
+    flex: 1;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.project-details p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.gray-text {
+    color: #aaa;
+    font-size: 16px;
+}
+
+.year {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Bottom Section */
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    /* Spacing between text block and phone projects */
+}
+
+/* Highlighted Text Block */
+.highlighted-text-block {
+    flex: 1;
+    text-align: left;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #000;
+}
+
+.highlighted-text-block .underlined {
+    text-decoration: underline;
+    text-decoration-color: #b0f45d;
+    /* Green underline */
+    text-decoration-thickness: 6px;
+    text-underline-offset: 4px;
+    font-weight: bold;
+}
+
+/* Phone Projects Section */
+.phone-projects {
+    display: flex;
+    gap: 20px;
+    /* Space between phone projects */
+}
+
+.phone-project {
+    text-align: center;
+    max-width: 150px;
+}
+
+.phone-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.project-details p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-image {
+        max-width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .phone-projects {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .phone-project {
+        max-width: 90%;
+    }
+}
+
+/** ===============my projects============== **/
+/* Section Container */
+.project-layout {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 20px;
+    font-family: 'CustomFont1', sans-serif;
+    color: #000;
+    line-height: 1.5;
+}
+
+.project {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows the text and image to wrap */
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Align text and image to the top */
+    gap: 20px;
+    /* Adds space between items */
+    margin-bottom: 10px;
+    position: relative;
+    /* Allows control over stacking */
+}
+
+/* Left Content Side */
+.project-content {
+    /* display: flex; */
+    flex: 1 1 50%;
+    /* Text block occupies 50% of the container width */
+    max-width: 800px;
+    /* Limit width */
+    /* min-width: 300px; */
+    text-align: left;
+    /* Prevent shrinking too much */
+    z-index: 2;
+    margin-top: 0px;
+    line-height: 1.4;
+    /* Ensure text appears above the image */
+}
+
+.project-description {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* Reduce the space below the description */
+}
+
+/* Right Image Side */
+.project-image {
+    flex: 1 1 30%;
+    /* Image block occupies 45% */
+    max-width: 360px;
+    /* Limit image width */
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    /* Image stays below text */
+}
+
+.project-image img {
+    max-width: 100%;
+    /* Prevent the image from overflowing */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    margin: 20px 0 0 0px;
+    /* Adjust image position */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional */
+}
+
+
+/* Title Styling */
+.project-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    line-height: 1.2;
+    /* Add a small gap between title and subtitle */
+    /* text-transform: uppercase; */
+}
+
+.project-year {
+    font-size: 16px;
+    /* Slightly smaller font size for the year */
+    font-weight: normal;
+    /* Regular weight for contrast */
+    color: #9b9a9a;
+    /* Neutral color for the year */
+}
+
+.project-author {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1.2;
+    /* color: #444; */
+}
+
+.author-me {
+    /* font-style: italic; */
+    /* Makes the text italic */
+    text-decoration: underline;
+    /* Adds underline */
+    /* color: #0073e6; */
+    /* A distinct color (blue in this case) */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project {
+        flex-direction: column;
+        /* Stack text and image vertically */
+        gap: 0px;
+    }
+
+    .project-content,
+    .project-image {
+        flex: 0 0 100%;
+        /* Each takes up full width */
+        max-width: 100%;
+        /* Remove content width limits */
+    }
+
+    .project-image img {
+        max-width: 95%;
+        /* Add some margin around the image */
+        margin: 0 auto;
+    }
+}
+
+.project-buttons {
+    display: flex;
+    gap: 10px;
+    /* Space between the buttons */
+    margin-top: 0px;
+    margin-bottom: 10px;
+    /* Space above the buttons */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Align buttons to the right */
+    gap: 10px;
+    /* Space between the buttons */
+    width: 100%;
+    margin-top: 0px;
+}
+
+.link-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    /* Width of the square */
+    height: 25px;
+    /* Height of the square */
+    text-decoration: none;
+    background-color: #f5f5f500;
+    /* Light gray background */
+    color: #333;
+    /* Text color */
+    font-family: 'CustomFont3';
+    /* font-weight: 00; */
+    font-size: 0.9rem;
+    border: 1.2px solid #333333;
+    /* Border around the square */
+    transition: transform 0.2s, background-color 0.2s;
+    /* Smooth hover effect */
+}
+
+.link-square:hover {
+    background-color: #e0e0e0;
+    /* Slightly darker gray on hover */
+    transform: translateY(-2px);
+    /* Subtle lift effect */
+}
+
+@media screen and (max-width: 768px) {
+    .project {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-container {
+        align-items: center;
+        /* Align buttons to center on smaller screens */
+    }
+}
+
+.site-footer {
+    /* background-color: #000; */
+    /* Black background */
+    color: #ae9a63;
+    /* White text */
+    text-align: center;
+    font-family: 'CustomFont1';
+    /* Center-align text */
+    padding: 20px 0;
+    /* Add padding for spacing */
+    font-size: 14px;
+    line-height: 1;
+    /* Adjust font size */
+}
+
+.site-footer p {
+    margin: 5px 0;
+    /* Reduce spacing between lines */
+    opacity: 0.85;
+    /* Adjust text transparency */
+}
+
+.site-footer p:last-child {
+    font-weight: bold;
+    /* Highlight the copyright line */
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        font-size: 12px;
+        /* Smaller font for smaller screens */
     }
 }
